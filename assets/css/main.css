@@ -13,6 +13,12 @@ body {
     font-weight: 700;
 }
 
+.gradient-text {
+  background: linear-gradient(90deg, #00BCD4, #00ff00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 hr {
   border: none;
   height: 3px;
