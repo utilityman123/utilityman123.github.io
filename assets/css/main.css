@@ -7,6 +7,12 @@ body {
     color: #333;
 }
 
+/* "FREE" word colour */
+.highlight {
+    color: #ff5722;  
+    font-weight: 700;
+}
+
 /* Centered layout */
 .container {
     max-width: 750px;
