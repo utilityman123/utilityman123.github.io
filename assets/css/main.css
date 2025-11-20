@@ -100,10 +100,6 @@ a {
     text-decoration: none;
 }
 
-a:hover {
-    text-decoration: underline;
-}
-
 /* Horizontal line */
 hr {
     border: none;
