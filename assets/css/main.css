@@ -1,9 +1,79 @@
+/* =========================================
+   1. COLOR VARIABLES & THEME SETUP
+   ========================================= */
+:root {
+    /* LIGHT MODE (Default) */
+    --bg-color: #e0e0e0;
+    --text-color: #333;
+    --heading-color: #111;
+    --card-bg: #bdbdbd;
+    --card-text-color: #555;
+    --border-color: #e6e6e6;
+    --hr-color: #cfcfcf;
+    
+    /* Button Colors */
+    --theme-btn-bg: #333;
+    --theme-btn-text: #fff;
+    --home-btn-bg: #333;
+    --home-btn-text: #fff;
+}
+
+[data-theme="dark"] {
+    /* DARK MODE PALETTE */
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --heading-color: #ffffff;
+    --card-bg: #1e1e1e;
+    --card-text-color: #b3b3b3;
+    --border-color: #333;
+    --hr-color: #444;
+
+    /* Button Colors in Dark Mode */
+    --theme-btn-bg: #f0f0f0;
+    --theme-btn-text: #121212;
+    --home-btn-bg: #e0e0e0;
+    --home-btn-text: #121212;
+}
+
+/* =========================================
+   2. GLOBAL STYLES
+   ========================================= */
 body {
     font-family: "Inter", sans-serif;
     margin: 0;
     padding: 0;
-    background: #e0e0e0;
-    color: #333;
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Links */
+a {
+    color: #0070f3;
+    text-decoration: none;
+}
+
+/* Horizontal line */
+hr {
+    border: none;
+    height: 3px;
+    background-color: var(--hr-color);
+    margin: 40px 0;
+}
+
+/* =========================================
+   3. TYPOGRAPHY & SPECIAL TEXT
+   ========================================= */
+h1, h2 {
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--heading-color);
+}
+
+p {
+    line-height: 1.75;
+    margin-bottom: 20px;
+    font-size: 16px;
 }
 
 /* "FREE" word colour */
@@ -19,33 +89,16 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
-hr {
-  border: none;
-  height: 3px;
-  background-color: #cfcfcf;
-}
-
-/* Centered layout */
+/* =========================================
+   4. LAYOUT & PROJECTS GRID
+   ========================================= */
 .container {
     max-width: 750px;
     margin: 0 auto;
     padding: 40px 20px;
 }
 
-/* Headings */
-h1, h2 {
-    font-weight: 600;
-    margin-bottom: 12px;
-    color: #111;
-}
-
-/* Paragraphs */
-p {
-    line-height: 1.75;
-    margin-bottom: 20px;
-    font-size: 16px;
-}
-/*css for "boxes" for project */
+/* Grid Layout */
 .projects {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -53,13 +106,14 @@ p {
     margin-top: 30px;
 }
 
+/* Project Cards */
 .project-card {
-    background: #bdbdbd;
-    border: 1px solid #e6e6e6;
+    background: var(--card-bg); /* Uses variable */
+    border: 1px solid var(--border-color); /* Uses variable */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 10px 2px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
 }
 
 .project-card:hover {
@@ -71,13 +125,17 @@ p {
     margin-top: 0;
     margin-bottom: 10px;
     font-weight: 600;
+    color: var(--heading-color);
 }
 
 .project-card p {
     margin-bottom: 15px;
-    color: #555;
+    color: var(--card-text-color); /* Updated for readability in dark mode */
 }
 
+/* =========================================
+   5. BUTTONS
+   ========================================= */
 .btn {
     display: inline-block;
     padding: 8px 14px;
@@ -93,16 +151,28 @@ p {
     background: #005bd1;
 }
 
-
-/* Links */
-a {
-    color: #0070f3;
-    text-decoration: none;
+/* Theme Toggle Button - Fixed to Top Right */
+.theme-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 14px;
+    
+    background-color: var(--theme-btn-bg);
+    color: var(--theme-btn-text);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
-/* Horizontal line */
-hr {
-    border: none;
-    border-top: 1px solid #e6e6e6;
-    margin: 40px 0;
+.theme-btn:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
 }
