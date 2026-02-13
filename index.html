@@ -133,10 +133,21 @@ function searchProjects() {
     }
 }
 
+document.addEventListener("keydown", function(event) {
+
+    // q for da search barr
+    if (event.key.toLowerCase() === "q") {
+        event.preventDefault();
+        document.getElementById("searchInput").focus();
+    }
+
+});
+
 </script>
 
 </body>
 </html>
+
 
 
 
