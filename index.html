@@ -90,6 +90,21 @@
         </footer>
     </div>
 
+<!-- Update Modal -->
+    <div id="updateModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal-btn" onclick="closeModal()">&times;</span>
+            <h2>What's New in v1.2 🎉</h2>
+            <hr style="margin: 15px 0;">
+            <ul class="update-list">
+                <li>Added search bar 🔎</li>
+                <li>Green shadow under project cards in Dark Mode 🟩</li>
+                <li>Slight css optimisation 👨‍💻</li>
+            </ul>
+            <br>
+        </div>
+    </div>
+
 <!-- Javascript -->
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
@@ -143,13 +158,30 @@ document.addEventListener("keydown", function(event) {
 
 });
 
+const currentVersion = "1.2"; //change when updating!!
+    const modal = document.getElementById("updateModal");
+    const storedVersion = localStorage.getItem("siteVersion");
+
+    if (storedVersion !== currentVersion) {
+        modal.style.display = "block";
+    }
+
+    function closeModal() {
+        modal.style.display = "none";
+        localStorage.setItem("siteVersion", currentVersion);
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
+
 </script>
 
 </body>
+
 </html>
-
-
-
 
 
 
