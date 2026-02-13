@@ -7,7 +7,7 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/main.css" />  
+    <link rel="stylesheet" href="main.css" />  
 <meta property="og:title" content="Utilities for everyone" />
 <meta property="og:description" content="Bunch of programs that are really helpful" />
 <meta property="og:image" content="https://utilityman123.github.io/preview.png" />
@@ -33,7 +33,14 @@
 
         <hr>
 
-        <h2>Projects (not mine)</h2>
+        <h2 id="projecttext">Projects (not mine)</h2>
+
+        <input 
+        type="text" 
+        id="searchInput" 
+        placeholder="Search projects..." 
+        onkeyup="searchProjects()">
+
 
        <section class="projects">
            
@@ -78,7 +85,7 @@
         <br>
         <footer> 
             <p style="text-align: center"> 
-            © 2026 Utilityman. Most rights reserved. <b>v1.0</b>      
+            © 2026 Utilityman. Most rights reserved. <b>v1.2</b>      
             </p>
         </footer>
     </div>
@@ -110,6 +117,22 @@
             toggleBtn.textContent = "☀️ Light Mode";
         }
     });
+
+function searchProjects() {
+    let input = document.getElementById("searchInput").value.toLowerCase();
+    let cards = document.getElementsByClassName("project-card");
+
+    for (let i = 0; i < cards.length; i++) {
+        let heading = cards[i].querySelector("h3").innerText.toLowerCase();
+
+        if (heading.startsWith(input)) {
+            cards[i].style.display = "";
+        } else {
+            cards[i].style.display = "none";
+        }
+    }
+}
+
 </script>
 
 </body>
