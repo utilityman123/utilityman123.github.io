@@ -17,9 +17,19 @@
 </head>
 
 <body>
+    <div class="bugs-window">
+        <h1 style="margin-top:5px; text-align: center; text-decoration: underline;">Bugs</h1>
+        <ul style="padding-left: 20px;">
+            <li> Annoying transition when switching to pages in dark mode
+                (too lazy to fix)
+            </li>
+        </ul>
+
+    </div>
     <div class="container">
         <button id="theme-toggle" class="theme-btn">🌙 Dark Mode</button>
         <h1> Hello, feel free to check out these <span class="gradient-text"> FREE </span> utilities! </h1>
+
         <p> Welcome to my website! Apps will be updated every year if possible. DM me for any app additions.
             Download speeds may be slow due to server issues.</p>
 
@@ -33,48 +43,65 @@
 
         <hr>
 
-        <h2 id="projecttext">Projects (not mine)</h2>
+        <h2 id="projecttext">Tools (not mine)</h2>
 
         <input 
         type="text" 
         id="searchInput" 
-        placeholder="Press q to search projects..." 
+        placeholder="Press q to search tools..." 
         onkeyup="searchProjects()">
 
 
-       <section class="projects">
+    <section class="projects">
            
-    <!-- Each Project -->   
     <div class="project-card">
         <h3>FL Studio 2025</h3>
         <p>Yes, for free</p>
-        <a href="https://utilityman123.github.io/FL-Studio-2025/" class="btn">View Project</a>
+        <a href="https://utilityman123.github.io/FL-Studio-2025/" class="btn">View Tool</a>
     </div>
 
     <div class="project-card">
         <h3>Adobe Premiere Pro 2025</h3>
         <p>Yes, for free</p>
-        <a href="https://utilityman123.github.io/Premiere-Pro-2025/" class="btn">View Project</a>
+        <a href="https://utilityman123.github.io/Premiere-Pro-2025/" class="btn">View Tool</a>
     </div>
 
     <div class="project-card">
         <h3>Youtube to audio/video app</h3>
         <p>Yes, without ads</p>
-        <a href="https://utilityman123.github.io/Youtube-Converter/" class="btn">View Project</a>
+        <a href="https://utilityman123.github.io/Youtube-Converter/" class="btn">View Tool</a>
     </div>
 
     <div class="project-card">
         <h3>Custom Resolution Utility</h3>
         <p>Be careful with it</p>
-        <a href="https://utilityman123.github.io/cru/" class="btn">View Project</a>
+        <a href="https://utilityman123.github.io/cru/" class="btn">View Tool</a>
     </div>
 
     <div class="project-card">
         <h3>Cheat Engine</h3>
         <p>Be careful with it</p>
-        <a href="https://utilityman123.github.io/Cheat-Engine/" class="btn">View Project</a>
+        <a href="https://utilityman123.github.io/Cheat-Engine/" class="btn">View Tool</a>
+    </div>
+
+    <div class="project-card">
+        <h3>Throttlestop</h3>
+        <p>Use at your own risk</p>
+        <a href="https://utilityman123.github.io/Throttlestop/" class="btn">View Tool</a>
     </div>
 </section>
+    <br>
+    <h2 id="projecttext"> Fun Stuff</h2>
+    <section class="projects">
+
+        <div class="project-card">
+        <img src="flappy aero.png" alt="Game Preview" class="card-img">
+        <h3>Flappy Aero</h3>
+        <p>Frutiger Aero themed Flappy Bird!</p>
+        <a href="#" class="btn">Play</a>
+
+    </div>
+    </section>
 
         <hr>
         <h2>Contact</h2>
@@ -85,21 +112,25 @@
         <br>
         <footer> 
             <p style="text-align: center"> 
-            © 2026 Utilityman. Most rights reserved. <b>v1.2</b>      
+            &copy <span id="year">2026</span> Utilityman. Most rights reserved.
+            <b id="version-link" onclick="scrollToTop()">v1.5</b>    
             </p>
         </footer>
     </div>
 
 <!-- Update Modal -->
+<!-- test again: localStorage.removeItem('siteVersion') -->
     <div id="updateModal" class="modal-overlay">
         <div class="modal-content">
             <span class="close-modal-btn" onclick="closeModal()">&times;</span>
-            <h2>What's New in v1.2 🎉</h2>
+            <h2>What's New in v1.5 🎉</h2>
             <hr style="margin: 15px 0;">
             <ul class="update-list">
-                <li>Added search bar 🔎</li>
-                <li>Green shadow under project cards in Dark Mode 🟩</li>
-                <li>Slight css optimisation 👨‍💻</li>
+                <li>Added bugs panel 🐞</li>
+                <li>Added <b>Throttlestop ⏱</b></li>
+                <li>Changed download links ⬇</li>
+                <li>Switched from "projects" to "tools"</li>
+                <li>Added something cool B)</li>
             </ul>
             <br>
         </div>
@@ -110,7 +141,8 @@
     const toggleBtn = document.getElementById('theme-toggle');
     const currentTheme = localStorage.getItem('theme');
 
-    // 1. Check saved theme on load
+    console.log("Why are you here?");
+
     if (currentTheme) {
         document.documentElement.setAttribute('data-theme', currentTheme);
         if (currentTheme === 'dark') {
@@ -158,16 +190,30 @@ document.addEventListener("keydown", function(event) {
 
 });
 
-const currentVersion = "1.2"; //change when updating!!
+    function updatePlaceholder() {
+        const input = document.getElementById("searchInput");
+        
+        if (window.innerWidth <= 1300) {
+            input.placeholder = "Search projects...";
+        } 
+    }
+
+    updatePlaceholder();
+
+    window.addEventListener('resize', updatePlaceholder);
+
+const currentVersion = "1.5"; //change when updating!!
     const modal = document.getElementById("updateModal");
     const storedVersion = localStorage.getItem("siteVersion");
 
     if (storedVersion !== currentVersion) {
         modal.style.display = "block";
+        document.body.style.overflow = "hidden";
     }
 
     function closeModal() {
         modal.style.display = "none";
+        document.body.style.overflow = "auto";
         localStorage.setItem("siteVersion", currentVersion);
     }
 
@@ -176,6 +222,16 @@ const currentVersion = "1.2"; //change when updating!!
             closeModal();
         }
     }
+
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    // Auto update year
+    document.getElementById("year").textContent = new Date().getFullYear();
 
 </script>
 
