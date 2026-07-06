@@ -119,7 +119,7 @@
         <footer> 
             <p style="text-align: center"> 
             &copy <span id="year">2026</span> Utilityman. Most rights reserved.
-            <b id="version-link" onclick="scrollToTop()">v1.5</b>    
+            <b id="version-link" onclick="scrollToTop()">v1.6</b>    
             </p>
         </footer>
     </div>
@@ -129,14 +129,12 @@
     <div id="updateModal" class="modal-overlay">
         <div class="modal-content">
             <span class="close-modal-btn" onclick="closeModal()">&times;</span>
-            <h2>What's New in v1.5 🎉</h2>
+            <h2>What's New in v1.6 🎉</h2>
             <hr style="margin: 15px 0;">
             <ul class="update-list">
-                <li>Added bugs panel 🐞</li>
-                <li>Added <b>Throttlestop ⏱</b></li>
-                <li>Changed download links ⬇</li>
-                <li>Switched from "projects" to "tools"</li>
-                <li>Added something cool B)</li>
+                <li>Added Among Us 🔪</li>
+                <li>Custom Flappy Bird game coming soon!</b></li>
+                <li>Removed herobrine</li>
             </ul>
             <br>
         </div>
@@ -200,7 +198,7 @@ document.addEventListener("keydown", function(event) {
         const input = document.getElementById("searchInput");
         
         if (window.innerWidth <= 1300) {
-            input.placeholder = "Search projects...";
+            input.placeholder = "Search tools...";
         } 
     }
 
@@ -208,7 +206,7 @@ document.addEventListener("keydown", function(event) {
 
     window.addEventListener('resize', updatePlaceholder);
 
-const currentVersion = "1.5"; //change when updating!!
+const currentVersion = "1.6"; //change when updating!!
     const modal = document.getElementById("updateModal");
     const storedVersion = localStorage.getItem("siteVersion");
 
